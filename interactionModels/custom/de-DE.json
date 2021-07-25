@@ -1,0 +1,323 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "hochschule worms wetter",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "HelpIntent",
+          "slots": [],
+          "samples": [
+            "Hilfe",
+            "help"
+          ]
+        },
+        {
+          "name": "TemperaturIntent",
+          "slots": [],
+          "samples": [
+            "Wie kalt ist es",
+            "Wie ist die Temperatur",
+            "Wie warm ist es"
+          ]
+        },
+        {
+          "name": "HumidityIntent",
+          "slots": [],
+          "samples": [
+            "Luftfeuchtigkeit",
+            "Wie hoch ist die Luftfeuchtigkeit",
+            "Wie feucht ist die Luft"
+          ]
+        },
+        {
+          "name": "BaroIntent",
+          "slots": [],
+          "samples": [
+            "Luftdruck",
+            "Wie hoch ist der Luftdruck"
+          ]
+        },
+        {
+          "name": "WindSpeedIntent",
+          "slots": [],
+          "samples": [
+            "Wie schnell weht der Wind",
+            "Wie hoch ist die Windgeschwindigkeit"
+          ]
+        },
+        {
+          "name": "FavouriteIntent",
+          "slots": [
+            {
+              "name": "WeatherData",
+              "type": "WeatherDataType"
+            }
+          ],
+          "samples": [
+            "Speichere als Favorit {WeatherData}  "
+          ]
+        },
+        {
+          "name": "FavouriteReaderIntent",
+          "slots": [],
+          "samples": [
+            "Was sind meine Favoriten"
+          ]
+        },
+        {
+          "name": "DeleteFavouriteIntent",
+          "slots": [
+            {
+              "name": "WeatherData",
+              "type": "WeatherDataType"
+            }
+          ],
+          "samples": [
+            "Lösche als Favorit {WeatherData}"
+          ]
+        },
+        {
+          "name": "DeleteAllFavouriteIntent",
+          "slots": [],
+          "samples": [
+            "Lösch alle Favoriten",
+            "Lösch meine Favoriten",
+            "Delete Favoriten",
+            "Reset Favoriten",
+            "Lösche meine Favoriten",
+            "Lösche alle Favoriten"
+          ]
+        },
+        {
+          "name": "OutputFavouriteIntent",
+          "slots": [],
+          "samples": [
+            "Meine Favoriten",
+            "Mein Wetter"
+          ]
+        },
+        {
+          "name": "StatisticsIntent",
+          "slots": [
+            {
+              "name": "MaxMin",
+              "type": "MaxMinDataType"
+            },
+            {
+              "name": "WeatherData",
+              "type": "WeatherDataType"
+            }
+          ],
+          "samples": [
+            "Was war der {MaxMin} Wert der {WeatherData}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "Luftdruck"
+              }
+            },
+            {
+              "name": {
+                "value": "Luftfeuchtigkeit"
+              }
+            },
+            {
+              "name": {
+                "value": "Windgeschwindigkeit"
+              }
+            },
+            {
+              "name": {
+                "value": "Temperatur"
+              }
+            }
+          ],
+          "name": "WeatherDataType"
+        },
+        {
+          "values": [
+            {
+              "id": "minimal",
+              "name": {
+                "value": "minimal",
+                "synonyms": [
+                  "niedrigste",
+                  "kleinsten"
+                ]
+              }
+            },
+            {
+              "id": "maximal",
+              "name": {
+                "value": "maximal",
+                "synonyms": [
+                  "höchste",
+                  "größter",
+                  "höchst",
+                  "höchstwert"
+                ]
+              }
+            }
+          ],
+          "name": "MaxMinDataType"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "FavouriteIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "WeatherData",
+              "type": "WeatherDataType",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "hasEntityResolutionMatch",
+                  "prompt": "Slot.Validation.572072541645.1330659968470.1569417596448"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "DeleteAllFavouriteIntent",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.548368330827"
+          },
+          "slots": [],
+          "delegationStrategy": "ALWAYS"
+        },
+        {
+          "name": "StatisticsIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "MaxMin",
+              "type": "MaxMinDataType",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "hasEntityResolutionMatch",
+                  "prompt": "Slot.Validation.134489108168.275048702677.885036205365"
+                }
+              ]
+            },
+            {
+              "name": "WeatherData",
+              "type": "WeatherDataType",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "hasEntityResolutionMatch",
+                  "prompt": "Slot.Validation.134489108168.1103175875550.46427939334"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "DeleteFavouriteIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "WeatherData",
+              "type": "WeatherDataType",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "hasEntityResolutionMatch",
+                  "prompt": "Slot.Validation.393239731081.128148366749.521495321468"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Slot.Validation.572072541645.1330659968470.1569417596448",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Diesen Wert kenn ich nicht. Versuchen sie es erneut"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.548368330827",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Wollen Sie wirklich alle Favoriten löschen?"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.393239731081.128148366749.521495321468",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Diesen Wert kenn ich nicht. Versuchen sie es erneut"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.134489108168.1103175875550.46427939334",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Den Wetterwert {WeatherData} kenne ich nicht. Probieren Sie einen anderen."
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.134489108168.275048702677.885036205365",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Den Wert {MaxMin} kenne ich nicht. Probieren Sie einen anderen."
+          }
+        ]
+      }
+    ]
+  },
+  "version": "31"
+}
